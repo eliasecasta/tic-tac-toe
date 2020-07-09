@@ -17,47 +17,51 @@ puts ''
 # player1_input = player1_input.to_i
 
 def board
+  puts ''
   $zones.each { |value| puts value.to_s }
+  puts ''
 end
 
 board
 
 player1_input = gets.chomp
 
-def change_value(input, player_sym)
-  
-
+def change_value(input, player_symbol)
   case input
   when '1'
-    $zones[0][0] = first_player_symbol
+    $zones[0][0] = player_symbol
   when '2'
-    $zones[0][1] = first_player_symbol
+    $zones[0][1] = player_symbol
   when '3'
-    $zones[0][2] = first_player_symbol
+    $zones[0][2] = player_symbol
   when '4'
-    $zones[1][0] = first_player_symbol
+    $zones[1][0] = player_symbol
   when '5'
-    $zones[1][1] = first_player_symbol
+    $zones[1][1] = player_symbol
   when '6'
-    $zones[1][2] = first_player_symbol
+    $zones[1][2] = player_symbol
   when '7'
-    $zones[2][0] = first_player_symbol
+    $zones[2][0] = player_symbol
   when '8'
-    $zones[2][1] = first_player_symbol
+    $zones[2][1] = player_symbol
   when '9'
-    $zones[2][2] = first_player_symbol
+    $zones[2][2] = player_symbol
   else
     puts 'You need to enter a value from 1 to 9 and not a string or anything else'
   end
 end
 
-change_value(player1_input)
+change_value(player1_input, 'x')
 
 board
 
-while win = false
-  board 
-  donde
+winner = nil
+
+while winner = nil
+  board
+  p 'This is your board, select in which number you wish to place your symbol:'
+
+  puts ''
 
   board
   donde
