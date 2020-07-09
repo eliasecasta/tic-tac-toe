@@ -53,7 +53,14 @@ while turns < 9
     board
     p "Your turn, select a place to insert your symbol #{first_player_name}"
     player1_input = gets.chomp
+
+    while numbers_selected.include?(player1_input) && (player1_input.to_i < 1) && (player1_input.to_i > 9)
+      p "Another place please #{first_player_name}"
+      player1_input = gets.chomp
+    end
+
     change_value(player1_input, first_player_symbol)
+    numbers_selected << player1_input.to_i
     current_player = 2
     turns += 1
   else
@@ -65,7 +72,8 @@ while turns < 9
     turns += 1
   end
   board
-  if turns == 9
-    p 'Game finished'
-  end
+  p 'Game finished' if turns == 9
 end
+
+# mientras que el valor exista dentro del array no termina el loop y vuelve a pedir otro input
+# si el input no existe, se guarda en el array, se corre el change value, se setea current player y se aumentan los turnos
