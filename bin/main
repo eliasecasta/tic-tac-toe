@@ -1,3 +1,66 @@
 #!/usr/bin/env ruby
 
-puts 'Hello World!'
+$zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+first_player_symbol = 'X'
+second_player_symbol = 'O'
+
+p 'What is the first player name?'
+first_player_name = gets.chomp
+
+p 'What is the second player name?'
+second_player_name = gets.chomp
+
+p 'This is your board, select in which number you wish to place your symbol:'
+
+puts ''
+
+# player1_input = player1_input.to_i
+
+def board
+  $zones.each { |value| puts value.to_s }
+end
+
+board
+
+player1_input = gets.chomp
+
+def change_value(input, player_sym)
+  
+
+  case input
+  when '1'
+    $zones[0][0] = first_player_symbol
+  when '2'
+    $zones[0][1] = first_player_symbol
+  when '3'
+    $zones[0][2] = first_player_symbol
+  when '4'
+    $zones[1][0] = first_player_symbol
+  when '5'
+    $zones[1][1] = first_player_symbol
+  when '6'
+    $zones[1][2] = first_player_symbol
+  when '7'
+    $zones[2][0] = first_player_symbol
+  when '8'
+    $zones[2][1] = first_player_symbol
+  when '9'
+    $zones[2][2] = first_player_symbol
+  else
+    puts 'You need to enter a value from 1 to 9 and not a string or anything else'
+  end
+end
+
+change_value(player1_input)
+
+board
+
+while win = false
+  board 
+  donde
+
+  board
+  donde
+
+  win = true
+end
