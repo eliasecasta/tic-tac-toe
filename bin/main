@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 @zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-first_player_symbol = 'X'
-second_player_symbol = 'O'
+@first_player_symbol = 'X'
+@second_player_symbol = 'O'
 
 def board
   puts ''
@@ -34,15 +34,18 @@ def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexi
 end
 
 def decide_winner
+  if @zones[0][0] == (@first_player_symbol || @second_player_symbol) && @zones[1][0] == (@first_player_symbol || @second_player_symbol) && @zones[2][0] == (@first_player_symbol || @second_player_symbol)
+    puts 'ALGUIEN GANO'
+  end
   # This function will evaluate which player won or if it was a draft and then return true or false respectively.
   # Proceeds to exit the while loop if true
 end
 
-def verify_input(player_input, player_name)
-  # Verifies if the position input of the players is already taken and if it is valid (1-9). Proceeds to ask again
-  # for a valid input in case that the input is not valid.
-  # This function will take as parameters player_input and player_name
-end
+# def verify_input(player_input, player_name)
+#   # Verifies if the position input of the players is already taken and if it is valid (1-9). Proceeds to ask again
+#   # for a valid input in case that the input is not valid.
+#   # This function will take as parameters player_input and player_name
+# end
 
 p 'What is the first player name?'
 first_player_name = gets.chomp
@@ -67,13 +70,13 @@ while turns < 9
 
     # This while will be inside the verify_input function
 
-    # while numbers_selected.include?(player1_input) || (player1_input.to_i < 1) || (player1_input.to_i > 9)
-    #   print "Another place please #{first_player_name} => "
-    #   player1_input = gets.chomp.to_i
-    # end
-    verify_input
+    while numbers_selected.include?(player1_input) || (player1_input.to_i < 1) || (player1_input.to_i > 9)
+      print "Another place please #{first_player_name} => "
+      player1_input = gets.chomp.to_i
+    end
+    # verify_input
 
-    change_value(player1_input, first_player_symbol)
+    change_value(player1_input, @first_player_symbol)
     numbers_selected << player1_input.to_i
     current_player = 2
 
@@ -84,21 +87,22 @@ while turns < 9
 
     # This while will be inside the verify_input function
 
-    # while numbers_selected.include?(player2_input) || (player2_input.to_i < 1) || (player2_input.to_i > 9)
-    #   print "Another place please #{second_player_name} =>"
-    #   player2_input = gets.chomp.to_i
-    # end
+    while numbers_selected.include?(player2_input) || (player2_input.to_i < 1) || (player2_input.to_i > 9)
+      print "Another place please #{second_player_name} =>"
+      player2_input = gets.chomp.to_i
+    end
 
-    verify_input
+    # verify_input
 
-    change_value(player2_input, second_player_symbol)
+    change_value(player2_input, @second_player_symbol)
     numbers_selected << player2_input.to_i
     current_player = 1
 
   end
-  if decide_winner == true
-    # breaks out from while loop and prints who won
-  end
+  # if decide_winner == true
+  # breaks out from while loop and prints who won
+
+  decide_winner
   turns += 1
   board if turns == 9
   p 'Game finished' if turns == 9
