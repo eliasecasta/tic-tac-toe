@@ -12,23 +12,23 @@ end
 
 def change_value(input, player_sym)
   case input
-  when '1'
+  when 1
     $zones[0][0] = player_sym
-  when '2'
+  when 2
     $zones[0][1] = player_sym
-  when '3'
+  when 3
     $zones[0][2] = player_sym
-  when '4'
+  when 4
     $zones[1][0] = player_sym
-  when '5'
+  when 5
     $zones[1][1] = player_sym
-  when '6'
+  when 6
     $zones[1][2] = player_sym
-  when '7'
+  when 7
     $zones[2][0] = player_sym
-  when '8'
+  when 8
     $zones[2][1] = player_sym
-  when '9'
+  when 9
     $zones[2][2] = player_sym
   else
     puts 'You need to enter a value from 1 to 9 and not a string or anything else'
@@ -52,28 +52,33 @@ while turns < 9
   if current_player == 1
     board
     p "Your turn, select a place to insert your symbol #{first_player_name}"
-    player1_input = gets.chomp
+    player1_input = gets.chomp.to_i
 
-    while numbers_selected.include?(player1_input) && (player1_input.to_i < 1) && (player1_input.to_i > 9)
+    while numbers_selected.include?(player1_input) || (player1_input.to_i < 1) || (player1_input.to_i > 9)
       p "Another place please #{first_player_name}"
-      player1_input = gets.chomp
+      player1_input = gets.chomp.to_i
     end
 
     change_value(player1_input, first_player_symbol)
     numbers_selected << player1_input.to_i
     current_player = 2
     turns += 1
+
   else
     board
     p "Your turn, select a place to insert your symbol #{second_player_name}"
-    player2_input = gets.chomp
+    player2_input = gets.chomp.to_i
+
+    while numbers_selected.include?(player2_input) || (player2_input.to_i < 1) || (player2_input.to_i > 9)
+      p "Another place please #{second_player_name}"
+      player2_input = gets.chomp.to_i
+    end
+
     change_value(player2_input, second_player_symbol)
+    numbers_selected << player2_input.to_i
     current_player = 1
     turns += 1
   end
   board
   p 'Game finished' if turns == 9
 end
-
-# mientras que el valor exista dentro del array no termina el loop y vuelve a pedir otro input
-# si el input no existe, se guarda en el array, se corre el change value, se setea current player y se aumentan los turnos
