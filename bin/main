@@ -34,11 +34,13 @@ def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexi
 end
 
 def decide_winner
-  # This function will evaluate which player won or if it was a draft and then return true or false respectively. Proceeds to exit the while loop if true
+  # This function will evaluate which player won or if it was a draft and then return true or false respectively.
+  # Proceeds to exit the while loop if true
 end
 
 def verify_input(player_input, player_name)
-  # Verifies if the position input of the players is already taken and if it is valid (1-9). Proceeds to ask again for a valid input in case that the input is not valid.
+  # Verifies if the position input of the players is already taken and if it is valid (1-9). Proceeds to ask again
+  # for a valid input in case that the input is not valid.
   # This function will take as parameters player_input and player_name
 end
 
@@ -75,10 +77,6 @@ while turns < 9
     numbers_selected << player1_input.to_i
     current_player = 2
 
-    if decide_winner == true
-      # breaks out from while loop and prints who won
-    end
-
   else
 
     print "Your turn, select a place to insert your symbol #{second_player_name} => "
@@ -97,10 +95,9 @@ while turns < 9
     numbers_selected << player2_input.to_i
     current_player = 1
 
-    if decide_winner == true
-      # breaks out from while loop and prints who won
-    end
-
+  end
+  if decide_winner == true
+    # breaks out from while loop and prints who won
   end
   turns += 1
   board if turns == 9
