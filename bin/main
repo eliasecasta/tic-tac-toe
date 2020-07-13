@@ -38,10 +38,15 @@ def decide_winner
   # Proceeds to exit the while loop if true
 end
 
-def verify_input(player_input, player_name)
+def draw
+  # This function will evaluate and inform the player if the selected move is a draw move.
+  # Proceeds to exit the while loop if true
+end
+
+def verify_input(player_input, current_player)
   # Verifies if the position input of the players is already taken and if it is valid (1-9). Proceeds to ask again
   # for a valid input in case that the input is not valid.
-  # This function will take as parameters player_input and player_name
+  # This function will take as parameters player_input and current_player
 end
 
 p 'What is the first player name?'
@@ -71,7 +76,7 @@ while turns < 9
     #   print "Another place please #{first_player_name} => "
     #   player1_input = gets.chomp.to_i
     # end
-    verify_input
+    verify_input(player1_input, 1)
 
     change_value(player1_input, first_player_symbol)
     numbers_selected << player1_input.to_i
@@ -89,16 +94,22 @@ while turns < 9
     #   player2_input = gets.chomp.to_i
     # end
 
-    verify_input
+    verify_input(player2_input, 2)
 
     change_value(player2_input, second_player_symbol)
     numbers_selected << player2_input.to_i
     current_player = 1
 
   end
+
   if decide_winner == true
     # breaks out from while loop and prints who won
   end
+
+  if draw == true
+    # breaks out from the while loop and informs the player the move is a draw.
+  end
+
   turns += 1
   board if turns == 9
   p 'Game finished' if turns == 9
