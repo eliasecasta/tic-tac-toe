@@ -3,6 +3,9 @@
 @zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 first_player_symbol = 'X'
 second_player_symbol = 'O'
+current_player = 1
+turns = 0
+@numbers_selected = []
 
 def board
   puts ''
@@ -33,20 +36,28 @@ def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexi
   end
 end
 
-def decide_winner
-  # This function will evaluate which player won or if it was a draft and then return true or false respectively.
-  # Proceeds to exit the while loop if true
+def decide_winner_or_draw
+  # This function will evaluate which player won or when it was a draw and then return win or draw when respective
+  # conditions are met.
+  # When this is neither a winner or draw move, the function returns false.
+  # Proceeds to exit the  loop when true
+  board
+  puts @zones
+  if @zones.none? { |i| i.is_a?(Integer) }
+    true
+  else
+    false
+  end
 end
 
-def draw
-  # This function will evaluate and inform the player if the selected move is a draw move.
-  # Proceeds to exit the while loop if true
-end
-
-def verify_input(player_input, current_player)
-  # Verifies if the position input of the players is already taken and if it is valid (1-9). Proceeds to ask again
-  # for a valid input in case that the input is not valid.
+def verify_input(player_input, current_player_name)
+  # Verifies when the position input of the players is already taken and when it is valid (1-9). Proceeds to ask again
+  # forr a valid input in the_case that the input is not valid.
   # This function will take as parameters player_input and current_player
+  while @numbers_selected.include?(player_input) || (player_input.to_i < 1) || (player_input.to_i > 9)
+    print "Another place please #{current_player_name} =>"
+    player_input = gets.chomp.to_i
+  end
 end
 
 p 'What is the first player name?'
@@ -55,12 +66,7 @@ first_player_name = gets.chomp
 p 'What is the second player name?'
 second_player_name = gets.chomp
 
-current_player = 1
-
-turns = 0
-numbers_selected = []
-
-while turns < 9
+while decide_winner_or_draw == true
   puts ''
   p 'This is the Tic-Tac-Toe board'
 
@@ -70,16 +76,10 @@ while turns < 9
     print "Your turn, select a place to insert your symbol #{first_player_name} => "
     player1_input = gets.chomp.to_i
 
-    # This while will be inside the verify_input function
-
-    # while numbers_selected.include?(player1_input) || (player1_input.to_i < 1) || (player1_input.to_i > 9)
-    #   print "Another place please #{first_player_name} => "
-    #   player1_input = gets.chomp.to_i
-    # end
-    verify_input(player1_input, 1)
+    verify_input(player1_input, first_player_name)
 
     change_value(player1_input, first_player_symbol)
-    numbers_selected << player1_input.to_i
+    @numbers_selected << player1_input.to_i
     current_player = 2
 
   else
@@ -87,30 +87,22 @@ while turns < 9
     print "Your turn, select a place to insert your symbol #{second_player_name} => "
     player2_input = gets.chomp.to_i
 
-    # This while will be inside the verify_input function
-
-    # while numbers_selected.include?(player2_input) || (player2_input.to_i < 1) || (player2_input.to_i > 9)
-    #   print "Another place please #{second_player_name} =>"
-    #   player2_input = gets.chomp.to_i
-    # end
-
-    verify_input(player2_input, 2)
+    verify_input(player2_input, second_player_name)
 
     change_value(player2_input, second_player_symbol)
-    numbers_selected << player2_input.to_i
+    @numbers_selected << player2_input.to_i
     current_player = 1
 
   end
+  winner = decide_winner_or_draw
 
-  if decide_winner == true
-    # breaks out from while loop and prints who won
+  if winner == false
+    # breaks out from the loop and prints who won or prints when it's a draw
+
+    board
+    p 'Game finished'
+    break
   end
-
-  if draw == true
-    # breaks out from the while loop and informs the player the move is a draw.
-  end
-
   turns += 1
-  board if turns == 9
-  p 'Game finished' if turns == 9
+
 end
