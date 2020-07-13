@@ -2,7 +2,7 @@
 
 @zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 first_player_symbol = 'X'
-second_player_symbol = 'O' # This symbol to 'test' to check what will happen if there is a move that is a winning move
+second_player_symbol = 'O' # This symbol 'test' to check what will happen if there is a move that is a winning move
 current_player = 1
 turns = 0
 @numbers_selected = []
