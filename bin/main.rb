@@ -44,8 +44,12 @@ def columns(position)
   test_arr
 end
 
+def winning_rows(position)
+  @zones[position]
+end
+
 def create_xy_arr(player_sym)
-  xy_arr=[player_sym,player_sym,player_sym]
+  xy_arr = [player_sym, player_sym, player_sym]
   xy_arr
 end
 
@@ -58,11 +62,10 @@ def decide_winner(symbol_array)
 
   if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr
     'win'
-  else
-    p 'continue'
-    false
-  end
+  elsif winning_rows(0) == xy_arr || winning_rows(1) == xy_arr || winning_rows(2) == xy_arr
+    'win'
 
+  end
 end
 
 def verify_input(player_input, current_player_name)
@@ -90,7 +93,7 @@ while turns < 9
   board
   if current_player == 1
 
-    @symbol_array= create_xy_arr(first_player_symbol)
+    @symbol_array = create_xy_arr(first_player_symbol)
 
     print "Your turn, select a place to insert your symbol #{first_player_name} => "
     player1_input = gets.chomp.to_i
