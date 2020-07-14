@@ -36,18 +36,33 @@ def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexi
   end
 end
 
-def decide_winner
+def columns(position)
+  test_arr = []
+  @zones.each do |x|
+    test_arr << x[position]
+  end
+  test_arr
+end
+
+def create_xy_arr(player_sym)
+  xy_arr=[player_sym,player_sym,player_sym]
+  xy_arr
+end
+
+def decide_winner(symbol_array)
   # This function will evaluate which player won and return 'win' when conditions are met.
   # When the move is not a winning move, the function returns false.
   # Proceeds to exit the loop when this function returns 'win'
+  xy_arr = symbol_array
   board
-  if @zones.any? { |i| i.include? 'test' }
-    p 'win'
+
+  if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr
     'win'
   else
     p 'continue'
     false
   end
+
 end
 
 def verify_input(player_input, current_player_name)
@@ -75,6 +90,8 @@ while turns < 9
   board
   if current_player == 1
 
+    @symbol_array= create_xy_arr(first_player_symbol)
+
     print "Your turn, select a place to insert your symbol #{first_player_name} => "
     player1_input = gets.chomp.to_i
 
@@ -85,6 +102,8 @@ while turns < 9
     current_player = 2
 
   else
+
+    @symbol_array = create_xy_arr(second_player_symbol)
 
     print "Your turn, select a place to insert your symbol #{second_player_name} => "
     player2_input = gets.chomp.to_i
@@ -99,7 +118,7 @@ while turns < 9
 
   turns += 1
 
-  if decide_winner == 'win'
+  if decide_winner(@symbol_array) == 'win'
     # Prints who won
     board
     p 'Player X won'
