@@ -71,18 +71,15 @@ def create_xy_arr(player_sym)
   xy_arr
 end
 
-def decide_winner(symbol_array)
-  # This function will evaluate which player won and return 'win' when conditions are met.
-  # When the move is not a winning move, the function returns false.
-  # Proceeds to exit the loop when this function returns 'win'
+def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   xy_arr = symbol_array
   board
 
-  if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr
+  if (columns(0) || columns(1) || columns(2)) == xy_arr
     'win'
-  elsif winning_rows(0) == xy_arr || winning_rows(1) == xy_arr || winning_rows(2) == xy_arr
+  elsif (winning_rows(0) || winning_rows(1) || winning_rows(2)) == xy_arr
     'win'
-  elsif winning_diagonals_left(0) == xy_arr || winning_diagonals_right(2) == xy_arr
+  elsif (winning_diagonals_left(0) || winning_diagonals_right(2)) == xy_arr
     'win'
 
   end
