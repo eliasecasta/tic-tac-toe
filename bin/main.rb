@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 @zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-first_player_symbol = 'X'
-second_player_symbol = 'O' # This symbol 'test' to check what will happen if there is a move that is a winning move
+first_player_symbol = 'X' # done
+second_player_symbol = 'O' # done
 @current_player = 1
 turns = 0
 @numbers_selected = []
@@ -96,11 +96,11 @@ def verify_input(player_input, _current_player_name)
   player_input
 end
 
-p 'What is the first player name?'
-@first_player_name = gets.chomp
+p 'What is the first player name?' # done
+@first_player_name = gets.chomp # done
 
-p 'What is the second player name?'
-@second_player_name = gets.chomp
+p 'What is the second player name?' # done
+@second_player_name = gets.chomp # done
 
 def who_is_playing
   @current_player == 2 ? @first_player_name : @second_player_name
