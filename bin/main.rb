@@ -3,7 +3,7 @@
 @zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 first_player_symbol = 'X'
 second_player_symbol = 'O' # This symbol 'test' to check what will happen if there is a move that is a winning move
-current_player = 1
+@current_player = 1
 turns = 0
 @numbers_selected = []
 
@@ -88,22 +88,39 @@ def decide_winner(symbol_array)
   end
 end
 
-def verify_input(player_input, current_player_name)
+def verify_input(player_input, _current_player_name)
   # Verifies when the position input of the players is already taken and when it is valid (1-9). Proceeds to ask again
   # forr a valid input in the_case that the input is not valid.
-  # This function will take as parameters player_input and current_player
+  # This function will take as parameters player_input and @current_player
   while @numbers_selected.include?(player_input) || (player_input.to_i < 1) || (player_input.to_i > 9)
-    print "Another place please #{current_player_name} =>"
+    print "Another place please #{@current_player_name} =>"
     player_input = gets.chomp.to_i
   end
   player_input
 end
 
 p 'What is the first player name?'
-first_player_name = gets.chomp
+@first_player_name = gets.chomp
 
 p 'What is the second player name?'
-second_player_name = gets.chomp
+@second_player_name = gets.chomp
+
+def who_is_playing
+  @current_player == 2 ? @first_player_name : @second_player_name
+end
+
+def somebody_won(current_player)
+  if decide_winner(@symbol_array) == 'win' && current_player
+    board
+    p "#{who_is_playing} won!!"
+    true
+  elsif decide_winner(@symbol_array) == 'win' && current_player
+    board
+    p "#{who_is_playing} won!!"
+    true
+  else false
+  end
+end
 
 while turns < 9
 
@@ -111,42 +128,37 @@ while turns < 9
   p 'This is the Tic-Tac-Toe board'
 
   board
-  if current_player == 1
+  if @current_player == 1
 
     @symbol_array = create_xy_arr(first_player_symbol)
 
-    print "Your turn, select a place to insert your symbol #{first_player_name} => "
+    print "Your turn, select a place to insert your symbol #{@first_player_name} => "
     player1_input = gets.chomp.to_i
 
-    player1_input = verify_input(player1_input, first_player_name)
+    player1_input = verify_input(player1_input, @first_player_name)
 
     change_value(player1_input, first_player_symbol)
     @numbers_selected << player1_input.to_i
-    current_player = 2
+    @current_player = 2
 
   else
 
     @symbol_array = create_xy_arr(second_player_symbol)
 
-    print "Your turn, select a place to insert your symbol #{second_player_name} => "
+    print "Your turn, select a place to insert your symbol #{@second_player_name} => "
     player2_input = gets.chomp.to_i
 
-    player2_input = verify_input(player2_input, second_player_name)
+    player2_input = verify_input(player2_input, @second_player_name)
 
     change_value(player2_input, second_player_symbol)
     @numbers_selected << player2_input.to_i
-    current_player = 1
+    @current_player = 1
 
   end
 
   turns += 1
 
-  if decide_winner(@symbol_array) == 'win'
-    # Prints who won
-    board
-    p "Player #{current_player} won"
-    break
-  end
+  break if somebody_won(@current_player) == true
 
   if turns == 9
     board
