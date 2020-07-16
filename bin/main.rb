@@ -73,7 +73,6 @@ end
 
 def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   xy_arr = symbol_array
-  board
 
   if (columns(0) || columns(1) || columns(2)) == xy_arr
     'win'
@@ -121,12 +120,12 @@ p 'What is the first player name?' # done
 p 'What is the second player name?' # done
 @second_player_name = gets.chomp # done
 
+puts ''
+p 'This is the Tic-Tac-Toe board'
+board
+
 while turns < 9
 
-  puts ''
-  p 'This is the Tic-Tac-Toe board'
-
-  board
   if @current_player == 1
 
     @symbol_array = create_xy_arr(first_player_symbol)
