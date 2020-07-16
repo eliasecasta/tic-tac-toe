@@ -74,13 +74,11 @@ end
 def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   xy_arr = symbol_array
 
-  if (columns(0) || columns(1) || columns(2)) == xy_arr
+  if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr # rubocop:disable Style/MultipleComparison
     'win'
-  elsif (winning_rows(0) || winning_rows(1) || winning_rows(2)) == xy_arr
+  elsif winning_rows(0) == xy_arr || winning_rows(1) == xy_arr || winning_rows(2) == xy_arr # rubocop:disable Style/MultipleComparison
     'win'
-  elsif winning_diagonals_left(0) == xy_arr
-    'win'
-  elsif winning_diagonals_right(2) == xy_arr
+  elsif winning_diagonals_left(0) == xy_arr || winning_diagonals_right(2) == xy_arr # rubocop:disable Style/MultipleComparison
     'win'
   else false
   end
@@ -161,5 +159,6 @@ while turns < 9
   if turns == 9
     board
     p 'It was a draw'
+  else board
   end
 end
