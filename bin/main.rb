@@ -79,9 +79,11 @@ def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, 
     'win'
   elsif (winning_rows(0) || winning_rows(1) || winning_rows(2)) == xy_arr
     'win'
-  elsif (winning_diagonals_left(0) || winning_diagonals_right(2)) == xy_arr
+  elsif winning_diagonals_left(0) == xy_arr
     'win'
-
+  elsif winning_diagonals_right(2) == xy_arr
+    'win'
+  else false
   end
 end
 
@@ -95,12 +97,6 @@ def verify_input(player_input, _current_player_name)
   end
   player_input
 end
-
-p 'What is the first player name?' # done
-@first_player_name = gets.chomp # done
-
-p 'What is the second player name?' # done
-@second_player_name = gets.chomp # done
 
 def who_is_playing
   @current_player == 2 ? @first_player_name : @second_player_name
@@ -118,6 +114,12 @@ def somebody_won(current_player)
   else false
   end
 end
+
+p 'What is the first player name?' # done
+@first_player_name = gets.chomp # done
+
+p 'What is the second player name?' # done
+@second_player_name = gets.chomp # done
 
 while turns < 9
 
