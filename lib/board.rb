@@ -1,10 +1,12 @@
+require '../lib/checkers.rb'
 class Board
-  attr_reader :zones
+  extend Checkers
 
+  attr_reader :zones
   def initialize(zones)
     @zones = zones
   end
-
+  columns(1)
   def print_board
     board_arr = []
     @zones.each do |value|
@@ -34,10 +36,5 @@ class Board
     when 9
       @zones[2][2] = player_sym
     end
-  end
-
-  def create_xy_arr(player_sym)
-    xy_arr = [player_sym, player_sym, player_sym]
-    xy_arr
   end
 end
