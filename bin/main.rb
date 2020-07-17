@@ -3,15 +3,15 @@
 @zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 first_player_symbol = 'X' # done
 second_player_symbol = 'O' # done
-@current_player = 1
-turns = 0
+@current_player = 1 # done
+turns = 0 # done
 @numbers_selected = []
 
-def board
-  puts ''
-  @zones.each { |value| puts value.to_s.tr(',', ' ') }
-  puts ''
-end
+def board # done
+  puts '' # done
+  @zones.each { |value| puts value.to_s.tr(',', ' ') } # done
+  puts '' # done
+end # done
 
 def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexity
   case input
@@ -118,9 +118,9 @@ p 'What is the first player name?' # done
 p 'What is the second player name?' # done
 @second_player_name = gets.chomp # done
 
-puts ''
-p 'This is the Tic-Tac-Toe board'
-board
+puts '' # done
+p 'This is the Tic-Tac-Toe board' # done
+board # done
 
 while turns < 9
 
@@ -159,6 +159,7 @@ while turns < 9
   if turns == 9
     board
     p 'It was a draw'
-  else board
+  else
+    board
   end
 end
