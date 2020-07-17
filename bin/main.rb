@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-@zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+@zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] # done
 first_player_symbol = 'X' # done
 second_player_symbol = 'O' # done
 @current_player = 1 # done
 turns = 0 # done
-@numbers_selected = []
+@numbers_selected = [] # done
 
 def board # done
   puts '' # done
@@ -66,10 +66,10 @@ def winning_diagonals_right(position)
   test_arr_diag_right
 end
 
-def create_xy_arr(player_sym)
-  xy_arr = [player_sym, player_sym, player_sym]
-  xy_arr
-end
+def create_xy_arr(player_sym) # done
+  xy_arr = [player_sym, player_sym, player_sym] # done
+  xy_arr # done
+end # done
 
 def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   xy_arr = symbol_array
@@ -84,16 +84,16 @@ def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, 
   end
 end
 
-def verify_input(player_input, _current_player_name)
+def verify_input(player_input, _current_player_name) # done
   # Verifies when the position input of the players is already taken and when it is valid (1-9). Proceeds to ask again
   # forr a valid input in the_case that the input is not valid.
   # This function will take as parameters player_input and @current_player
-  while @numbers_selected.include?(player_input) || (player_input.to_i < 1) || (player_input.to_i > 9)
-    print "Another place please #{@current_player_name} =>"
-    player_input = gets.chomp.to_i
-  end
-  player_input
-end
+  while @numbers_selected.include?(player_input) || (player_input.to_i < 1) || (player_input.to_i > 9) # done
+    print "Another place please #{@current_player_name} =>" # done
+    player_input = gets.chomp.to_i # done
+  end # done
+  player_input # done
+end # done
 
 def who_is_playing
   @current_player == 2 ? @first_player_name : @second_player_name
@@ -122,16 +122,16 @@ puts '' # done
 p 'This is the Tic-Tac-Toe board' # done
 board # done
 
-while turns < 9
+while turns < 9 # done
 
-  if @current_player == 1
+  if @current_player == 1 # done
 
-    @symbol_array = create_xy_arr(first_player_symbol)
+    @symbol_array = create_xy_arr(first_player_symbol) # done
 
-    print "Your turn, select a place to insert your symbol #{@first_player_name} => "
-    player1_input = gets.chomp.to_i
+    print "Your turn, select a place to insert your symbol #{@first_player_name} => " # done
+    player1_input = gets.chomp.to_i # done
 
-    player1_input = verify_input(player1_input, @first_player_name)
+    player1_input = verify_input(player1_input, @first_player_name) # done
 
     change_value(player1_input, first_player_symbol)
     @numbers_selected << player1_input.to_i

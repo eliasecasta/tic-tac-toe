@@ -1,5 +1,7 @@
 class Board
+
   attr_reader :zones
+
   def initialize(zones)
     @zones = zones
   end
@@ -11,4 +13,10 @@ class Board
     end
     board_arr
   end
+
+  def create_xy_arr(player_sym)
+    xy_arr = [player_sym, player_sym, player_sym]
+    xy_arr
+  end
+
 end
