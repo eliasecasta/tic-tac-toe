@@ -13,76 +13,76 @@ def board # done
   puts '' # done
 end # done
 
-def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexity
-  case input
-  when 1
-    @zones[0][0] = player_sym
-  when 2
-    @zones[0][1] = player_sym
-  when 3
-    @zones[0][2] = player_sym
-  when 4
-    @zones[1][0] = player_sym
-  when 5
-    @zones[1][1] = player_sym
-  when 6
-    @zones[1][2] = player_sym
-  when 7
-    @zones[2][0] = player_sym
-  when 8
-    @zones[2][1] = player_sym
-  when 9
-    @zones[2][2] = player_sym
-  end
-end
+def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexity # done
+  case input # done
+  when 1 # done
+    @zones[0][0] = player_sym # done
+  when 2 # done
+    @zones[0][1] = player_sym # done
+  when 3 # done 
+    @zones[0][2] = player_sym # done
+  when 4 # done
+    @zones[1][0] = player_sym # done
+  when 5 # done
+    @zones[1][1] = player_sym # done
+  when 6 # done
+    @zones[1][2] = player_sym # done
+  when 7 # done
+    @zones[2][0] = player_sym # done
+  when 8 # done
+    @zones[2][1] = player_sym # done
+  when 9 # done
+    @zones[2][2] = player_sym # done
+  end # done
+end # done
 
-def columns(position)
-  test_arr = []
-  @zones.each do |x|
-    test_arr << x[position]
-  end
-  test_arr
-end
+def columns(position) # done
+  test_arr = [] # done
+  @zones.each do |x| # done
+    test_arr << x[position] # done
+  end # done
+  test_arr # done
+end # done
 
-def winning_rows(position)
-  @zones[position]
-end
+def winning_rows(position) # done
+  @zones[position] # done
+end # done
 
-def winning_diagonals_left(position)
-  test_arr_diag_left = []
-  @zones.each do |x|
-    test_arr_diag_left << x[position]
-    position += 1
-  end
-  test_arr_diag_left
-end
+def winning_diagonals_left(position) # done
+  test_arr_diag_left = [] # done
+  @zones.each do |x| # done
+    test_arr_diag_left << x[position] # done
+    position += 1 # done
+  end # done
+  test_arr_diag_left # done
+end # done
 
-def winning_diagonals_right(position)
-  test_arr_diag_right = []
-  @zones.each do |x|
-    test_arr_diag_right << x[position]
-    position -= 1
-  end
-  test_arr_diag_right
-end
+def winning_diagonals_right(position) # done
+  test_arr_diag_right = [] # done
+  @zones.each do |x| # done
+    test_arr_diag_right << x[position] # done
+    position -= 1 # done
+  end # done
+  test_arr_diag_right # done
+end # done
 
 def create_xy_arr(player_sym) # done
   xy_arr = [player_sym, player_sym, player_sym] # done
   xy_arr # done
 end # done
 
-def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-  xy_arr = symbol_array
+def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity  # done
+  xy_arr = symbol_array # done
 
-  if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr # rubocop:disable Style/MultipleComparison
-    'win'
-  elsif winning_rows(0) == xy_arr || winning_rows(1) == xy_arr || winning_rows(2) == xy_arr # rubocop:disable Style/MultipleComparison
-    'win'
-  elsif winning_diagonals_left(0) == xy_arr || winning_diagonals_right(2) == xy_arr # rubocop:disable Style/MultipleComparison
-    'win'
-  else false
-  end
-end
+  if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr # rubocop:disable Style/MultipleComparison # done
+    'win' # done
+  elsif winning_rows(0) == xy_arr || winning_rows(1) == xy_arr || winning_rows(2) == xy_arr # rubocop:disable Style/MultipleComparison # done
+    'win' # done
+  elsif winning_diagonals_left(0) == xy_arr || winning_diagonals_right(2) == xy_arr # rubocop:disable Style/MultipleComparison # done
+    'win' # done
+  else false # done
+  end # done
+end # done
 
 def verify_input(player_input, _current_player_name) # done
   # Verifies when the position input of the players is already taken and when it is valid (1-9). Proceeds to ask again
@@ -95,22 +95,22 @@ def verify_input(player_input, _current_player_name) # done
   player_input # done
 end # done
 
-def who_is_playing
-  @current_player == 2 ? @first_player_name : @second_player_name
-end
+def who_is_playing # done
+  @current_player == 2 ? @first_player_name : @second_player_name # done
+end # done
 
-def somebody_won(current_player)
-  if decide_winner(@symbol_array) == 'win' && current_player
-    board
-    p "#{who_is_playing} won!!"
-    true
-  elsif decide_winner(@symbol_array) == 'win' && current_player
-    board
-    p "#{who_is_playing} won!!"
-    true
-  else false
-  end
-end
+def somebody_won(current_player) # done
+  if decide_winner(@symbol_array) == 'win' && current_player # done
+    board # done
+    p "#{who_is_playing} won!!" # done
+    true # done
+  elsif decide_winner(@symbol_array) == 'win' && current_player # done
+    board # done
+    p "#{who_is_playing} won!!" # done
+    true # done
+  else false # done
+  end # done
+end # done
 
 p 'What is the first player name?' # done
 @first_player_name = gets.chomp # done
@@ -133,9 +133,9 @@ while turns < 9 # done
 
     player1_input = verify_input(player1_input, @first_player_name) # done
 
-    change_value(player1_input, first_player_symbol)
-    @numbers_selected << player1_input.to_i
-    @current_player = 2
+    change_value(player1_input, first_player_symbol) # done
+    @numbers_selected << player1_input.to_i # done
+    @current_player = 2 # done
 
   else
 

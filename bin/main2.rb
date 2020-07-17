@@ -9,17 +9,25 @@ turns = 0
 @numbers_selected = []
 
 p 'What is the first player name?'
-player1 = Player.new('X', 'Elias')
+p1_name = gets.chomp
+p "What symbol do you want #{p1_name}?"
+p1_symbol = gets.chomp
+player1 = Player.new(p1_name, p1_symbol)
 
 p 'What is the second player name?'
-player2 = Player.new('O', 'Miguel')
+p2_name = gets.chomp
+p "What symbol do you want #{p2_name}?"
+p2_symbol = gets.chomp
+player2 = Player.new(p2_name, p2_symbol)
 
 puts ''
 p 'This is the Tic-Tac-Toe board'
+puts ''
 
-board1 = Board.new(@zones)
-
+board1 = Board.new(@zones, @current_player, @numbers_selected)
+p board1
 puts board1.print_board
+puts ''
 
 while turns < 9
 
@@ -29,15 +37,12 @@ while turns < 9
 
     print "Your turn, select a place to insert your symbol #{player1.name} => "
     player1_input = gets.chomp.to_i
-
-    # player1_input = verify_input(player1_input, player1.name)
+    puts ''
 
     while @numbers_selected.include?(player1_input) || (player1_input.to_i < 1) || (player1_input.to_i > 9)
       print "Another place please #{player1.name} =>"
       player1_input = gets.chomp.to_i
     end
-
-    p player1_input
 
     board1.change_value(player1_input, player1.symbol)
     @numbers_selected << player1_input.to_i
@@ -45,12 +50,16 @@ while turns < 9
 
   else
 
-    @symbol_array = create_xy_arr(player2.symbol)
+    @symbol_array = board1.create_xy_arr(player2.symbol)
 
-    print "Your turn, select a place to insert your symbol #{player2.symbol} => "
+    print "Your turn, select a place to insert your symbol #{player2.name} => "
     player2_input = gets.chomp.to_i
+    puts ''
 
-    player2_input = verify_input(player2_input, player2.name)
+    while @numbers_selected.include?(player2_input) || (player2_input.to_i < 1) || (player2_input.to_i > 9)
+      print "Another place please #{player2.name} =>"
+      player2_input = gets.chomp.to_i
+    end
 
     board1.change_value(player2_input, player2.symbol)
     @numbers_selected << player2_input.to_i
@@ -60,12 +69,26 @@ while turns < 9
 
   turns += 1
 
-  break if somebody_won(@current_player) == true
+  if board1.decide_winner(@symbol_array) == 'win' && @current_player == 2
+    puts board1.print_board
+    puts ''
+    print "#{player1.name} won!"
+    puts ''
+    break
+  elsif board1.decide_winner(@symbol_array) == 'win' && @current_player == 1
+    puts board1.print_board
+    print "#{player2.name} won!"
+    puts ''
+    break
+  end
 
   if turns == 9
     puts board1.print_board
+    puts ''
     p 'It was a draw'
+    puts ''
   else
     puts board1.print_board
+    puts ''
   end
 end
