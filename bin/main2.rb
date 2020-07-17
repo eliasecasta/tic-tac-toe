@@ -9,23 +9,23 @@ turns = 0
 @numbers_selected = []
 
 p 'What is the first player name?'
-player1 = Player.new('X', "Elias")
+player1 = Player.new('X', 'Elias')
 
 p 'What is the second player name?'
-player2 = Player.new('O', "Miguel")
+player2 = Player.new('O', 'Miguel')
 
 puts ''
 p 'This is the Tic-Tac-Toe board'
 
-board = Board.new(@zones)
+board1 = Board.new(@zones)
 
-puts board.print_board
+puts board1.print_board
 
 while turns < 9
 
   if @current_player == 1
 
-    @symbol_array = board.create_xy_arr(player1.symbol)
+    @symbol_array = board1.create_xy_arr(player1.symbol)
 
     print "Your turn, select a place to insert your symbol #{player1.name} => "
     player1_input = gets.chomp.to_i
@@ -39,7 +39,7 @@ while turns < 9
 
     p player1_input
 
-    change_value(player1_input, player1.name)
+    board1.change_value(player1_input, player1.symbol)
     @numbers_selected << player1_input.to_i
     @current_player = 2
 
@@ -52,7 +52,7 @@ while turns < 9
 
     player2_input = verify_input(player2_input, player2.name)
 
-    change_value(player2_input, player2.symbol)
+    board1.change_value(player2_input, player2.symbol)
     @numbers_selected << player2_input.to_i
     @current_player = 1
 
@@ -63,9 +63,9 @@ while turns < 9
   break if somebody_won(@current_player) == true
 
   if turns == 9
-    board
+    puts board1.print_board
     p 'It was a draw'
   else
-    board
+    puts board1.print_board
   end
 end
