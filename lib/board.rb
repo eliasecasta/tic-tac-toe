@@ -2,8 +2,6 @@ require '../lib/checkers.rb'
 class Board
   extend Checkers
 
-  # @@symbol_array=['X','X','X']
-
   def initialize(zones, current_player, numbers_selected)
     @zones = zones
     @current_player = current_player

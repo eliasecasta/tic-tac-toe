@@ -1,3 +1,5 @@
 .vscode/*
 test.rb
 .vscode/
+
+lib/checkers.rb
