@@ -1,13 +1,11 @@
-require '../lib/checkers.rb'
 class Board
-  extend Checkers
 
   def initialize(zones, current_player, numbers_selected)
     @zones = zones
     @current_player = current_player
     @numbers_selected = numbers_selected
   end
-  columns(1)
+  
   def print_board
     board_arr = []
     @zones.each do |value|

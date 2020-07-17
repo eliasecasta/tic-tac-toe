@@ -1,152 +1,66 @@
 #!/usr/bin/env ruby
 
-@zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] # done
-first_player_symbol = 'X' # done
-second_player_symbol = 'O' # done
-@current_player = 1 # done
-turns = 0 # done
-@numbers_selected = [] # done
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
 
-def board # done
-  puts '' # done
-  @zones.each { |value| puts value.to_s.tr(',', ' ') } # done
-  puts '' # done
-end # done
+@zones = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+@current_player = 1
+turns = 0
+@numbers_selected = []
 
-def change_value(input, player_sym) # rubocop:disable Metrics/CyclomaticComplexity # done
-  case input # done
-  when 1 # done
-    @zones[0][0] = player_sym # done
-  when 2 # done
-    @zones[0][1] = player_sym # done
-  when 3 # done 
-    @zones[0][2] = player_sym # done
-  when 4 # done
-    @zones[1][0] = player_sym # done
-  when 5 # done
-    @zones[1][1] = player_sym # done
-  when 6 # done
-    @zones[1][2] = player_sym # done
-  when 7 # done
-    @zones[2][0] = player_sym # done
-  when 8 # done
-    @zones[2][1] = player_sym # done
-  when 9 # done
-    @zones[2][2] = player_sym # done
-  end # done
-end # done
+p 'What is the first player name?'
+p1_name = gets.chomp
+p "What symbol do you want #{p1_name}?"
+p1_symbol = gets.chomp
+player1 = Player.new(p1_name, p1_symbol)
 
-def columns(position) # done
-  test_arr = [] # done
-  @zones.each do |x| # done
-    test_arr << x[position] # done
-  end # done
-  test_arr # done
-end # done
+p 'What is the second player name?'
+p2_name = gets.chomp
+p "What symbol do you want #{p2_name}?"
+p2_symbol = gets.chomp
+player2 = Player.new(p2_name, p2_symbol)
 
-def winning_rows(position) # done
-  @zones[position] # done
-end # done
+puts ''
+p 'This is the Tic-Tac-Toe board'
+puts ''
 
-def winning_diagonals_left(position) # done
-  test_arr_diag_left = [] # done
-  @zones.each do |x| # done
-    test_arr_diag_left << x[position] # done
-    position += 1 # done
-  end # done
-  test_arr_diag_left # done
-end # done
+board1 = Board.new(@zones, @current_player, @numbers_selected)
+puts board1.print_board
+puts ''
 
-def winning_diagonals_right(position) # done
-  test_arr_diag_right = [] # done
-  @zones.each do |x| # done
-    test_arr_diag_right << x[position] # done
-    position -= 1 # done
-  end # done
-  test_arr_diag_right # done
-end # done
+while turns < 9
 
-def create_xy_arr(player_sym) # done
-  xy_arr = [player_sym, player_sym, player_sym] # done
-  xy_arr # done
-end # done
+  if @current_player == 1
 
-def decide_winner(symbol_array) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity  # done
-  xy_arr = symbol_array # done
+    @symbol_array = board1.create_xy_arr(player1.symbol)
 
-  if columns(0) == xy_arr || columns(1) == xy_arr || columns(2) == xy_arr # rubocop:disable Style/MultipleComparison # done
-    'win' # done
-  elsif winning_rows(0) == xy_arr || winning_rows(1) == xy_arr || winning_rows(2) == xy_arr # rubocop:disable Style/MultipleComparison # done
-    'win' # done
-  elsif winning_diagonals_left(0) == xy_arr || winning_diagonals_right(2) == xy_arr # rubocop:disable Style/MultipleComparison # done
-    'win' # done
-  else false # done
-  end # done
-end # done
+    print "Your turn, select a place to insert your symbol #{player1.name} => "
+    player1_input = gets.chomp.to_i
+    puts ''
 
-def verify_input(player_input, _current_player_name) # done
-  # Verifies when the position input of the players is already taken and when it is valid (1-9). Proceeds to ask again
-  # forr a valid input in the_case that the input is not valid.
-  # This function will take as parameters player_input and @current_player
-  while @numbers_selected.include?(player_input) || (player_input.to_i < 1) || (player_input.to_i > 9) # done
-    print "Another place please #{@current_player_name} =>" # done
-    player_input = gets.chomp.to_i # done
-  end # done
-  player_input # done
-end # done
+    while @numbers_selected.include?(player1_input) || (player1_input.to_i < 1) || (player1_input.to_i > 9)
+      print "Another place please #{player1.name} =>"
+      player1_input = gets.chomp.to_i
+    end
 
-def who_is_playing # done
-  @current_player == 2 ? @first_player_name : @second_player_name # done
-end # done
-
-def somebody_won(current_player) # done
-  if decide_winner(@symbol_array) == 'win' && current_player # done
-    board # done
-    p "#{who_is_playing} won!!" # done
-    true # done
-  elsif decide_winner(@symbol_array) == 'win' && current_player # done
-    board # done
-    p "#{who_is_playing} won!!" # done
-    true # done
-  else false # done
-  end # done
-end # done
-
-p 'What is the first player name?' # done
-@first_player_name = gets.chomp # done
-
-p 'What is the second player name?' # done
-@second_player_name = gets.chomp # done
-
-puts '' # done
-p 'This is the Tic-Tac-Toe board' # done
-board # done
-
-while turns < 9 # done
-
-  if @current_player == 1 # done
-
-    @symbol_array = create_xy_arr(first_player_symbol) # done
-
-    print "Your turn, select a place to insert your symbol #{@first_player_name} => " # done
-    player1_input = gets.chomp.to_i # done
-
-    player1_input = verify_input(player1_input, @first_player_name) # done
-
-    change_value(player1_input, first_player_symbol) # done
-    @numbers_selected << player1_input.to_i # done
-    @current_player = 2 # done
+    board1.change_value(player1_input, player1.symbol)
+    @numbers_selected << player1_input.to_i
+    @current_player = 2
 
   else
 
-    @symbol_array = create_xy_arr(second_player_symbol)
+    @symbol_array = board1.create_xy_arr(player2.symbol)
 
-    print "Your turn, select a place to insert your symbol #{@second_player_name} => "
+    print "Your turn, select a place to insert your symbol #{player2.name} => "
     player2_input = gets.chomp.to_i
+    puts ''
 
-    player2_input = verify_input(player2_input, @second_player_name)
+    while @numbers_selected.include?(player2_input) || (player2_input.to_i < 1) || (player2_input.to_i > 9)
+      print "Another place please #{player2.name} =>"
+      player2_input = gets.chomp.to_i
+    end
 
-    change_value(player2_input, second_player_symbol)
+    board1.change_value(player2_input, player2.symbol)
     @numbers_selected << player2_input.to_i
     @current_player = 1
 
@@ -154,12 +68,26 @@ while turns < 9 # done
 
   turns += 1
 
-  break if somebody_won(@current_player) == true
+  if board1.decide_winner(@symbol_array) == 'win' && @current_player == 2
+    puts board1.print_board
+    puts ''
+    print "#{player1.name} won!"
+    puts ''
+    break
+  elsif board1.decide_winner(@symbol_array) == 'win' && @current_player == 1
+    puts board1.print_board
+    print "#{player2.name} won!"
+    puts ''
+    break
+  end
 
   if turns == 9
-    board
+    puts board1.print_board
+    puts ''
     p 'It was a draw'
+    puts ''
   else
-    board
+    puts board1.print_board
+    puts ''
   end
 end
