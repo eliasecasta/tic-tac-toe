@@ -88,6 +88,9 @@ while turns < 9
     puts ''
 
   end
-  puts board1.print_board
-  puts ''
+
+  if turns != 9
+    puts board1.print_board
+    puts ''
+  end
 end
