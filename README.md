@@ -61,11 +61,11 @@ Draw game example:
 
 ## Authors
 
-
 👤 **Elias Castañeda**
 
-- Twitter: [@twitterhandle](https://twitter.com/e71az)
-- Linkedin: [linkedin](https://www.linkedin.com/in/elias-casta%C3%B1eda-17a771115/)
+- Github: [@e71az](https://github.com/e71az)
+- Linkedin: [@e71az](https://www.linkedin.com/in/e71az/)
+- Twitter: [@e71az](https://twitter.com/e71az)
 
 👤 **Miguel Tapia Escalera (Meltrust)**
 
