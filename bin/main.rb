@@ -86,8 +86,8 @@ while turns < 9
     puts ''
     p 'It was a draw'
     puts ''
-  else
-    puts board1.print_board
-    puts ''
+
   end
+  puts board1.print_board
+  puts ''
 end
