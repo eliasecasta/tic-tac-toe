@@ -52,7 +52,7 @@ Draw game example:
 
 [x x o]
 
-[x o X]
+[x o x]
 
 ### Validators
 
