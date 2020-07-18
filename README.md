@@ -1,8 +1,8 @@
 # Tic tac toe terminal game!!
 
-> We wrote my own versions of one of the most iconic (and played) games in history: tic-tac-toe.
+> We wrote our own version of one of the most iconic (and played) games in history: tic-tac-toe.
 
-As this project is quite big, it required separate milestones with code reviews for each.
+As this project is quite big, it required separate milestones with code reviews for each branch.
 
 ## Built With
 
@@ -15,7 +15,44 @@ To get a local copy up and running follow these simple example steps:
 
 - Clone this repository into your local machine.
 - Run the main file by typing this in your command line:
-  \$ ruby main
+  $ ruby main
+  
+## How to play
+
+This is a 2 player game.  
+Firstly, the program asks for each player's name and their preferred symbol which can be any keyboard character (we recommend letters or numbers).
+
+Afterwards, the game begins presenting the tic-tac-toe board:
+
+[1 2 3] 
+
+[4 5 6]
+
+[7 8 9]
+
+Now players need to take turns to put their symbol into the 9 legal positions, 1 at a time.
+A player symbol cannot overwrite the opposing player's symbol.  Each move should be on different positions.
+
+The goal of the game is to fill the positions with a player's symbol 3 times in a row.  
+The rows can be vertical, horizontal, and diagonal.
+
+If no player can fill a row after all positions are filled, the game is considered a draw. 
+
+For instance:
+
+[X 2 3] 
+
+[4 X 6]
+
+[7 8 X]
+
+Draw game example:
+
+[o x o] 
+
+[x x o]
+
+[x o X]
 
 ### Validators
 
@@ -24,10 +61,16 @@ To get a local copy up and running follow these simple example steps:
 
 ## Authors
 
+
+👤 **Elias Castañeda**
+
+- Twitter: [@twitterhandle](https://twitter.com/e71az)
+- Linkedin: [linkedin](https://www.linkedin.com/in/elias-casta%C3%B1eda-17a771115/)
+
 👤 **Miguel Tapia Escalera (Meltrust)**
 
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
 - Linkedin: [linkedin](https://www.linkedin.com/in/meltrust/)
+
 
 ## 🤝 Contributing
 
