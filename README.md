@@ -73,7 +73,7 @@ Draw game example:
 
 👤 **Miguel Tapia Escalera (Meltrust)**
 
-- Linkedin: [linkedin](https://www.linkedin.com/in/meltrust/)
+- Linkedin: [@meltrust](https://www.linkedin.com/in/meltrust/)
 
 
 ## 🤝 Contributing
