@@ -27,13 +27,13 @@ This is a 2 player game.
 Firstly, the program asks for each player's name and their preferred symbol which can be any keyboard character (we recommend letters or numbers).
 
 Afterwards, the game begins presenting the tic-tac-toe board:
-
+```
 [1 2 3] 
 
 [4 5 6]
 
 [7 8 9]
-
+```
 Now players need to take turns to put their symbol into the 9 legal positions, 1 at a time.
 A player symbol cannot overwrite the opposing player's symbol.  Each move should be on different positions.
 
@@ -43,21 +43,21 @@ The rows can be vertical, horizontal, and diagonal.
 If no player can fill a row after all positions are filled, the game is considered a draw. 
 
 For instance:
-
+```
 [X 2 3] 
 
 [4 X 6]
 
 [7 8 X]
-
+```
 Draw game example:
-
+```
 [o x o] 
 
 [x x o]
 
 [x o x]
-
+```
 ### Validators
 
 - Rubocop
