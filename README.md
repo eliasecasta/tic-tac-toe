@@ -4,6 +4,14 @@
 
 As this project is quite big, it required separate milestones with code reviews for each branch.
 
+## Code execution view:
+
+![screenshot](./assets/codess.png)
+
+## Demo Link
+
+[Live Demo Link](https://repl.it/@EliasCastaneda/tic-tac-toe).
+
 ## Built With
 
 - Ruby!
@@ -15,7 +23,7 @@ To get a local copy up and running follow these simple example steps:
 
 - Clone this repository into your local machine.
 - Run the main file by typing this in your command line:
-```
+```bash
   $ cd tic-tac-toe
   $ cd bin
   $ ruby main
@@ -95,3 +103,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](lic.url) licensed.
+
