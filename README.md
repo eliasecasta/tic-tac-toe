@@ -15,7 +15,7 @@ To get a local copy up and running follow these simple example steps:
 
 - Clone this repository into your local machine.
 - Run the main file by typing this in your command line:
-```
+```bash
   $ cd tic-tac-toe
   $ cd bin
   $ ruby main
