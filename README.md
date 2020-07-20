@@ -4,6 +4,10 @@
 
 As this project is quite big, it required separate milestones with code reviews for each branch.
 
+## Code execution view:
+
+![screenshot](./assets/codess.png)
+
 ## Demo Link
 
 [Live Demo Link](https://repl.it/@EliasCastaneda/tic-tac-toe).
