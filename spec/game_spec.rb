@@ -72,11 +72,20 @@ describe 'tictactoe' do
   describe '#decide_winner' do
     let(:zones) { [['X', 2, 3], ['X', 5, 6], ['X', 8, 9]] }
 
-    it 'returns \'win\' if columns method equals xy_arr' do
-      # board.create_xy_arr('X')
-      expect(board.create_xy_arr('X')).to eql(board.columns(0))
+    it 'returns \'win\' if columns method equals a complete column' do
+      expect(board.columns(0)).to eql([1, 4, 7])
+    end
+
+    it 'returns \'win\' if rows method equals a complete row' do
+      expect(board.winning_rows(1)).to eql([4, 5, 6])
+    end
+
+    it 'returns \'win\' if winning_diagonals_left method equals a complete diagonal' do
+      expect(board.winning_diagonals_left(0)).to eql([1, 5, 9])
+    end
+
+    it 'returns \'win\' if winning_diagonals_right method equals a complete diagonal' do
+      expect(board.winning_diagonals_right(2)).to eql([3, 5, 7])
     end
   end
 end
-
-# == board.columns(0)).to be true
