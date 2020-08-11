@@ -28,6 +28,8 @@ To get a local copy up and running follow these simple example steps:
   $ cd bin
   $ ruby main
 ```
+
+
   
 ## How to play
 
@@ -66,10 +68,19 @@ Draw game example:
 
 [x o x]
 ```
+
+## Running the RSpec tests
+
+- Install and run RSpec in the root directory of the project:
+```bash
+$ gem install rspec
+$ rspec spec/game_spec.rb
+```
 ### Validators
 
 - Rubocop
 - Stickler
+- RSpec
 
 ## Authors
 
@@ -82,6 +93,7 @@ Draw game example:
 👤 **Miguel Tapia Escalera (Meltrust)**
 
 - Linkedin: [@meltrust](https://www.linkedin.com/in/meltrust/)
+- Github: [@meltrust](https://github.com/meltrust)
 
 
 ## 🤝 Contributing
