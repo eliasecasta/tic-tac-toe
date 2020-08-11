@@ -1,9 +1,7 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 
-describe 'tictactoe' do
-  let(:player1) { Player.new('Meltrust', 'X') }
-  let(:player2) { Player.new('Charles', 'O') }
+describe 'Board' do
   let(:board) { Board.new([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1, []) }
 
   describe '#print_board' do
